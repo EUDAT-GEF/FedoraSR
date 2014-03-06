@@ -5,8 +5,8 @@ Fedora Commons safe replication code, to be used in conjunction with an iRODS en
 
 This package can be used for replicating any mounted collection. Example:
 
-    java -jar ./FedoraSR-1.0.4-jar-with-dependencies.jar\
-        --epic-pid-server 'http://pid.gwdg.de/handles/'  --epic-pid-prefix 1234
+    java -jar ./FedoraSR-1.0.4-jar-with-dependencies.jar \
+        --epic-pid-server 'http://pid.gwdg.de/handles/' --epic-pid-prefix 1234 \
         --epic-pid-user UserName --epic-pid-pass UserPassword \
         --irods-source-path /vzSRC/source --irods-target-path /vzDST/destination
 
