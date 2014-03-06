@@ -32,8 +32,14 @@ public class ReplicateCollection {
 				acceptsAll(Arrays.asList("h", "?"), "show help").forHelp();
 				acceptsAll(Arrays.asList("v", "verbose"), "verbose mode on");
 
+				accepts("epic-pid-server").withRequiredArg().required()
+						.describedAs("URL of the PID handle server");
+				accepts("epic-pid-prefix").withRequiredArg().required()
+						.describedAs("prefix of the PID handles");
+				accepts("epic-pid-user").withRequiredArg().required()
+						.describedAs("registered user on PID handle server");
 				accepts("epic-pid-pass").withRequiredArg().required()
-						.describedAs("password for gwdg/EKUT PID account");
+						.describedAs("password for PID account");
 
 				if (!USE_ICOMMANDS) {
 					accepts("irods-server").withRequiredArg().required();
@@ -62,8 +68,9 @@ public class ReplicateCollection {
 
 		PidServerImpl pider = new PidServerImpl(new PidServerConfig() {
 			{
-				localPrefix = "11022";
-				username = "1002-01";
+				epicServerUrl = (String) opt.valueOf("epic-pid-server");
+				localPrefix = (String) opt.valueOf("epic-pid-prefix");
+				username = (String) opt.valueOf("epic-pid-user");
 				password = (String) opt.valueOf("epic-pid-pass");
 			}
 		});
